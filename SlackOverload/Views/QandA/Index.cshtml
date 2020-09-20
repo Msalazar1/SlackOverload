@@ -34,16 +34,25 @@
 	<h2>Click below to view a Question and provide feedback:</h2>
 	<br />
 	<form method="get" action="/QandA">
-		<label name="view" title="View" value="view">View:</label>
+		<label name="view" title="View" value="view">View: </label>
 		<select name="view">
 			<option>All</option>
-			@foreach(String category in categories)
+			@foreach (String category in categories)
 			{
 				<option>@category</option>
 			}
 		</select>
 		<input type="submit" value="Go" />
 	</form>
+	Category:
+	@if (String.IsNullOrEmpty(ViewBag?.category))
+	{
+		<text>All</text>
+	}
+	else
+	{
+		<text>@ViewBag.category</text>
+	}
 	<br />
 	<ul>
 		@foreach (Questions question in Model)
